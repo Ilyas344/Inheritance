@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Transport {
+public abstract class  Transport {
 
     private final String brand;
     private final String model;
@@ -65,7 +65,7 @@ public class Transport {
         return maxSpeed;
     }
 
-    public void setColor(String color) {
+    public void  setColor(String color) {
         {
             if (color == null || color.equals("")) {
                 this.color = "без цвета";
