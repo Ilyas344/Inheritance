@@ -1,10 +1,7 @@
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Car extends Transport {
-    private final String typeTransport="Автомобиль";
-
     private Double engineVolume;
     private String transmission;
     private final String bodyType;
@@ -42,34 +39,22 @@ public class Car extends Transport {
     public Car(String brand, String model, Double engineVolume, String country, Integer year, String color,
                String transmission, String bodyType, String number, Integer seats,Integer maxSpeed) {
         super(brand,model,year,country,color,maxSpeed);
-        java.util.Date date= new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int month = cal.get(Calendar.MONTH);
-        if (month<4&&month>10)
-        {this.winterSummer = true;}
-        else {this.winterSummer = false;}
+        setWinterSummer();
+        setEngineVolume();
+        setNumber();
 
         if (seats == null) {
             this.seats = 1;
         } else {
             this.seats = seats;
         }
-        if (number == null || number.equals("")) {
-            this.number = "default";
-        } else {
-            this.number = number;
-        }
-        if (bodyType == null || bodyType.equals("")) {
+
+        if (bodyType == null || bodyType.isEmpty()) {
             this.bodyType = "default";
         } else {
             this.bodyType = bodyType;
         }
-        if (transmission == null || transmission.equals("")) {
-            this.transmission = "default";
-        } else {
-            this.transmission = transmission;
-        }
+        setTransmission();
 
 
         this.engineVolume = engineVolume;
@@ -82,7 +67,7 @@ public class Car extends Transport {
     public String toString() {
         String tire;
         if(winterSummer==true){tire="летняя";}else {tire="зимняя";}
-        return typeTransport+super.toString()+
+        return "Автомобиль "+super.toString()+
                 "\nмощность двигателя: " + engineVolume +
                 ", трансмиссия: " + transmission +
                 ", тип кузова: " + bodyType +
@@ -104,7 +89,7 @@ public class Car extends Transport {
         return engineVolume;
     }
 
-    public void setEngineVolume(Double engineVolume) {
+    public void setEngineVolume() {
         if (engineVolume <= 0) {
             engineVolume = 1.5;
         }
@@ -115,8 +100,8 @@ public class Car extends Transport {
 
 
 
-    public void setTransmission(String transmission) {
-        if (transmission == null || transmission.equals("")) {
+    public void setTransmission() {
+        if (transmission == null || transmission.isEmpty()) {
             this.transmission = "default";
         } else {
             this.transmission = transmission;
@@ -124,20 +109,17 @@ public class Car extends Transport {
 
     }
 
-    public void setNumber(String number) {
-        if (number == null || number.equals("")) {
+    public void setNumber() {
+        if (number == null || number.isEmpty()) {
             this.number = "default";
         } else {
             this.number = number;
         }
     }
 
-    public void setWinterSummer(boolean winterSummer) {
-        java.util.Date date= new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int month = cal.get(Calendar.MONTH);
-        if (month<4&&month>10)
+    public void setWinterSummer() {
+
+        if (LocalDate.now().getMonthValue()<4&&LocalDate.now().getMonthValue()>10)
         {this.winterSummer = true;}
         else {this.winterSummer = false;}
     }

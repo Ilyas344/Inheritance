@@ -10,26 +10,26 @@ public abstract class  Transport {
     private Integer maxSpeed;
 
     public Transport(String brand, String model, Integer year, String country, String color, Integer maxSpeed) {
-        if (brand == null || brand.equals("")) {
+        if (brand == null || brand.isEmpty()) {
             this.brand = "default brand";
         } else {
             this.brand = brand;
         }
 
-        if (model == null || model.equals("")) {
+        if (model == null || model.isEmpty()) {
             this.model = "default model";
         } else {
             this.model = model;
         }
 
         this.year = Math.abs(year);
-        if (country == null || country.equals("")) {
+        if (country == null || country.isEmpty()) {
             this.country = "default country";
         } else {
             this.country = country;
         }
 
-        if (color == null || color.equals("")) {
+        if (color == null || color.isEmpty()) {
             this.color = "default color";
         }
             this.color = color;
@@ -67,7 +67,7 @@ public abstract class  Transport {
 
     public void  setColor(String color) {
         {
-            if (color == null || color.equals("")) {
+            if (color == null || color.isEmpty()) {
                 this.color = "без цвета";
             } else {
                 this.color = color;

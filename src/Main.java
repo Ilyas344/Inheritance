@@ -16,9 +16,9 @@ public class Main {
         System.out.println(hyundai);
         System.out.println(lada);
         System.out.println();
-        Bus paz=new Bus("ПАЗ","3205","Россия",2020,"белый",60,20,10);
-        Bus maz=new Bus("МАЗ","241","Россия",2021,"синий",60,30,20);
-        Bus liaz=new Bus("ЛИАЗ","677","Россия",2022,"красный",60,40,30);
+        Bus paz=new Bus("ПАЗ","3205","Россия",2020,"белый",60);
+        Bus maz=new Bus("МАЗ","241","Россия",2021,"синий",60);
+        Bus liaz=new Bus("ЛИАЗ","677","Россия",2022,"красный",60);
         System.out.println(paz);
         System.out.println(maz);
         System.out.println(liaz);
